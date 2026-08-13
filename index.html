@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alpha Sources Global Media Entertainment</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 7%;
+
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #e50914;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e50914;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 120px 7%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.96),
+                    rgba(0,0,0,0.65),
+                    rgba(0,0,0,0.2)
+                ),
+                url("https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=2200&q=90");
+
+            background-size: cover;
+            background-position: center;
+
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .live-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #ff3040;
+
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 4px;
+
+            margin-bottom: 20px;
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: #ff3040;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #ff3040;
+            animation: pulse 1.2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(1.5);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 7vw, 95px);
+            line-height: 0.95;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .hero h1 span {
+            color: #e50914;
+        }
+
+        .hero p {
+            max-width: 680px;
+
+            margin-top: 30px;
+
+            color: #d0d0d0;
+
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .buttons {
+            margin-top: 35px;
+
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 16px 30px;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            border-radius: 4px;
+
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #e50914;
+            color: white;
+        }
+
+        .primary:hover {
+            background: white;
+            color: black;
+            transform: translateY(-4px);
+        }
+
+        .secondary {
+            border: 1px solid white;
+            color: white;
+        }
+
+        .secondary:hover {
+            background: white;
+            color: black;
+        }
+
+        /* =========================
+           HERO STATS
+        ========================= */
+
+        .hero-stats {
+            position: absolute;
+
+            bottom: 35px;
+            right: 7%;
+
+            display: flex;
+            gap: 40px;
+        }
+
+        .stat h3 {
+            font-size: 30px;
+        }
+
+        .stat p {
+            color: #888;
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        section {
+            padding: 110px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title small {
+            color: #e50914;
+            letter-spacing: 4px;
+            font-weight: bold;
+        }
+
+        .section-title h2 {
+            font-size: clamp(38px, 5vw, 65px);
+            margin-top: 12px;
+        }
+
+        .section-title h2 span {
+            color: #e50914;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 15px auto;
+            color: #999;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .service {
+            background: #101010;
+
+            padding: 35px;
+
+            border: 1px solid #222;
+            border-radius: 12px;
+
+            transition: 0.4s;
+        }
+
+        .service:hover {
+            transform: translateY(-10px);
+            border-color: #e50914;
+
+            box-shadow:
+                0 20px 50px rgba(229,9,20,0.15);
+        }
+
+        .service-icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .service h3 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .service p {
+            color: #999;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           LIVE STREAMING
+        ========================= */
+
+        .streaming {
+            background: #0b0b0b;
+        }
+
+        .streaming-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .streaming-image {
+            position: relative;
+        }
+
+        .streaming-image img {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+        }
+
+        .live-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+
+            background: rgba(0,0,0,0.8);
+
+            padding: 10px 15px;
+
+            border-radius: 5px;
+
+            color: #ff3040;
+
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .streaming-text small {
+            color: #e50914;
+            letter-spacing: 4px;
+            font-weight: bold;
+        }
+
+        .streaming-text h2 {
+            font-size: 55px;
+            margin: 15px 0 25px;
+        }
+
+        .streaming-text h2 span {
+            color: #e50914;
+        }
+
+        .streaming-text p {
+            color: #aaa;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        /* =========================
+           SIGNAL FLOW
+        ========================= */
+
+        .signal-section {
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.9),
+                    rgba(0,0,0,0.9)
+                ),
+                url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=2000&q=90");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .signal-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+            margin-top: 50px;
+        }
+
+        .signal-box {
+            width: 180px;
+            min-height: 150px;
+
+            background: rgba(15,15,15,0.9);
+
+            border: 1px solid #333;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        .signal-box:hover {
+            border-color: #e50914;
+            transform: translateY(-8px);
+        }
+
+        .signal-box .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .signal-box h3 {
+            font-size: 17px;
+        }
+
+        .signal-box p {
+            color: #888;
+            font-size: 12px;
+            line-height: 1.5;
+            margin-top: 8px;
+        }
+
+        .arrow {
+            color: #e50914;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           HOW IT WORKS
+        ========================= */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+            gap: 25px;
+        }
+
+        .step {
+            position: relative;
+
+            padding: 35px;
+
+            background: #101010;
+
+            border-radius: 12px;
+            border: 1px solid #222;
+        }
+
+        .step-number {
+            font-size: 50px;
+            font-weight: 900;
+            color: #e50914;
+
+            opacity: 0.8;
+
+            margin-bottom: 15px;
+        }
+
+        .step h3 {
+            margin-bottom: 12px;
+        }
+
+        .step p {
+            color: #888;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           EVENTS
+        ========================= */
+
+        .events {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+            gap: 25px;
+        }
+
+        .event {
+            min-height: 250px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            background-size: cover;
+            background-position: center;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,0.95)
+                );
+        }
+
+        .event-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .event h3 {
+            font-size: 25px;
+        }
+
+        .event p {
+            color: #bbb;
+            margin-top: 8px;
+        }
+
+        .church {
+            background-image:
+                url("https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1000&q=85");
+        }
+
+        .event-photo {
+            background-image:
+                url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1000&q=85");
+        }
+
+        .ceremony {
+            background-image:
+                url("https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1000&q=85");
+        }
+
+        /* =========================
+           CINEMATOGRAPHY
+        ========================= */
+
+        .cinema {
+            background: #0b0b0b;
+        }
+
+        .cinema-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .cinema-text h2 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .cinema-text h2 span {
+            color: #e50914;
+        }
+
+        .cinema-text p {
+            color: #aaa;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .camera-list {
+            list-style: none;
+        }
+
+        .camera-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #222;
+            color: #ccc;
+        }
+
+        .camera-list li::before {
+            content: "✓";
+            color: #e50914;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        .camera-image img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        /* =========================
+           CEO
+        ========================= */
+
+        .ceo {
+            text-align: center;
+        }
+
+        .ceo-card {
+            max-width: 800px;
+            margin: auto;
+
+            background: #101010;
+
+            border: 1px solid #222;
+            border-radius: 15px;
+
+            padding: 50px;
+        }
+
+        .ceo-avatar {
+            width: 110px;
+            height: 110px;
+
+            margin: 0 auto 25px;
+
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #e50914;
+
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .ceo-card h2 {
+            font-size: 35px;
+        }
+
+        .ceo-card h4 {
+            color: #e50914;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        .ceo-card p {
+            color: #999;
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            background: #e50914;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: clamp(40px,6vw,75px);
+            text-transform: uppercase;
+        }
+
+        .contact p {
+            max-width: 650px;
+            margin: 20px auto 30px;
+            line-height: 1.7;
+        }
+
+        .phone {
+            display: inline-block;
+
+            padding: 18px 35px;
+
+            background: black;
+            color: white;
+
+            border-radius: 5px;
+
+            font-size: 25px;
+            font-weight: bold;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .phone:hover {
+            background: white;
+            color: black;
+            transform: scale(1.05);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 45px 7%;
+
+            background: #030303;
+
+            display: flex;
+            justify-content: space-between;
+
+            flex-wrap: wrap;
+
+            gap: 20px;
+        }
+
+        footer h3 span {
+            color: #e50914;
+        }
+
+        footer p {
+            color: #666;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width: 850px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                padding: 120px 6%;
+            }
+
+            .hero-stats {
+                display: none;
+            }
+
+            .streaming-container,
+            .cinema-container {
+                grid-template-columns: 1fr;
+            }
+
+            .streaming-text h2,
+            .cinema-text h2 {
+                font-size: 42px;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+            }
+
+            .signal-flow {
+                flex-direction: column;
+            }
+
+            footer {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            ALPHA <span>SOURCES</span>
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#streaming">Streaming</a></li>
+            <li><a href="#signal">Signal Flow</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="live-label">
+                <div class="live-dot"></div>
+                LIVE MEDIA PRODUCTION
+            </div>
+
+            <h1>
+                YOUR EVENT.<br>
+                <span>OUR LENS.</span>
+            </h1>
+
+            <p>
+                Alpha Sources Global Media Entertainment provides
+                professional video coverage, cinematography,
+                live production and streaming solutions that
+                connect your event with audiences anywhere in
+                the world.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#services" class="btn primary">
+                    Our Services
+                </a>
+
+                <a href="#signal" class="btn secondary">
+                    See How It Works
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-stats">
+
+            <div class="stat">
+                <h3>LIVE</h3>
+                <p>Broadcast Production</p>
+            </div>
+
+            <div class="stat">
+                <h3>HD</h3>
+                <p>Professional Video</p>
+            </div>
+
+            <div class="stat">
+                <h3>24/7</h3>
+                <p>Global Reach</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SERVICES
+    ========================= -->
+
+    <section id="services">
+
+        <div class="section-title">
+
+            <small>WHAT WE DO</small>
+
+            <h2>
+                OUR <span>SERVICES</span>
+            </h2>
+
+            <p>
+                From capturing the first frame to delivering
+                your event to viewers around the world,
+                Alpha Sources handles the complete production process.
+            </p>
+
+        </div>
+
+
+        <div class="services">
+
+            <div class="service">
+
+                <div class="service-icon">🎥</div>
+
+                <h3>Video Coverage</h3>
+
+                <p>
+                    Professional multi-camera coverage for
+                    churches, conferences, weddings, ceremonies,
+                    corporate events and special occasions.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">🎬</div>
+
+                <h3>Cinematography</h3>
+
+                <p>
+                    Creative camera work, cinematic shots,
+                    professional composition and visual storytelling
+                    designed to make your event memorable.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">🔴</div>
+
+                <h3>Live Streaming</h3>
+
+                <p>
+                    Broadcast your event live so that people
+                    who cannot attend physically can watch
+                    from anywhere in the world.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">🎛️</div>
+
+                <h3>Live Production</h3>
+
+                <p>
+                    Professional switching, camera operation,
+                    graphics, audio integration and real-time
+                    production control.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">📡</div>
+
+                <h3>Signal Management</h3>
+
+                <p>
+                    Reliable routing of video and audio signals
+                    from cameras to production systems and
+                    eventually to your online audience.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">🌍</div>
+
+                <h3>Global Reach</h3>
+
+                <p>
+                    Connect audiences across cities, countries
+                    and continents through modern digital
+                    broadcasting technology.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         LIVE STREAMING
+    ========================= -->
+
+    <section class="streaming" id="streaming">
+
+        <div class="streaming-container">
+
+            <div class="streaming-image">
+
+                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=1400&q=90">
+
+                <div class="live-overlay">
+                    ● LIVE
+                </div>
+
+            </div>
+
+
+            <div class="streaming-text">
+
+                <small>LIVE BROADCASTING</small>
+
+                <h2>
+                    YOUR EVENT<br>
+                    <span>WITHOUT BORDERS.</span>
+                </h2>
+
+                <p>
+                    Imagine holding an important ceremony in one
+                    location while family, friends, members,
+                    customers or guests watch the event live
+                    from another city or even another country.
+                </p>
+
+                <p>
+                    That's what our live-streaming service makes
+                    possible. We capture the event, process the
+                    video and send the broadcast to an online
+                    audience in real time.
+                </p>
+
+                <a href="#signal" class="btn primary">
+                    Understand The Signal
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SIGNAL FLOW
+    ========================= -->
+
+    <section class="signal-section" id="signal">
+
+        <div class="section-title">
+
+            <small>BEHIND THE BROADCAST</small>
+
+            <h2>
+                HOW THE <span>SIGNAL TRAVELS</span>
+            </h2>
+
+            <p>
+                A simplified look at how Alpha Sources can move
+                the picture from a camera at an event to viewers
+                watching from far away.
+            </p>
+
+        </div>
+
+
+        <div class="signal-flow">
+
+            <div class="signal-box">
+
+                <div class="icon">📹</div>
+
+                <h3>CAMERA</h3>
+
+                <p>
+                    Captures video and audio
+                    at the event.
+                </p>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="signal-box">
+
+                <div class="icon">🎛️</div>
+
+                <h3>SWITCHER</h3>
+
+                <p>
+                    Selects and combines
+                    camera feeds.
+                </p>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="signal-box">
+
+                <div class="icon">💻</div>
+
+                <h3>ENCODER</h3>
+
+                <p>
+                    Converts the production
+                    into a streamable signal.
+                </p>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="signal-box">
+
+                <div class="icon">🌐</div>
+
+                <h3>INTERNET</h3>
+
+                <p>
+                    Carries the broadcast
+                    to the online platform.
+                </p>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="signal-box">
+
+                <div class="icon">📱</div>
+
+                <h3>VIEWERS</h3>
+
+                <p>
+                    People watch the event
+                    from anywhere.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HOW IT WORKS
+    ========================= -->
+
+    <section>
+
+        <div class="section-title">
+
+            <small>THE PROCESS</small>
+
+            <h2>
+                FROM CAMERA TO <span>SCREEN</span>
+            </h2>
+
+        </div>
+
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <h3>Capture</h3>
+
+                <p>
+                    Our camera operators capture the event
+                    using professional production cameras
+                    positioned around the venue.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <h3>Production</h3>
+
+                <p>
+                    Multiple camera feeds can be brought into
+                    a production system where the director
+                    selects the shots viewers see.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <h3>Encoding</h3>
+
+                <p>
+                    The finished program is encoded into
+                    a format suitable for online delivery.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    04
+                </div>
+
+                <h3>Broadcast</h3>
+
+                <p>
+                    The stream is delivered online, allowing
+                    people outside the venue to watch the
+                    event remotely.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EVENTS
+    ========================= -->
+
+    <section>
+
+        <div class="section-title">
+
+            <small>WE COVER IT ALL</small>
+
+            <h2>
+                EVENTS WE <span>STREAM</span>
+            </h2>
+
+        </div>
+
+
+        <div class="events">
+
+            <div class="event church">
+
+                <div class="event-content">
+
+                    <h3>Church Services</h3>
+
+                    <p>
+                        Worship services, conferences and special programs.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="event event-photo">
+
+                <div class="event-content">
+
+                    <h3>Live Events</h3>
+
+                    <p>
+                        Conferences, concerts and corporate events.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="event ceremony">
+
+                <div class="event-content">
+
+                    <h3>Ceremonies</h3>
+
+                    <p>
+                        Weddings, celebrations and important occasions.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CINEMATOGRAPHY
+    ========================= -->
+
+    <section class="cinema" id="about">
+
+        <div class="cinema-container">
+
+            <div class="cinema-text">
+
+                <small class="live-label">
+                    CINEMATOGRAPHY
+                </small>
+
+                <h2>
+                    EVERY FRAME<br>
+                    TELLS A <span>STORY.</span>
+                </h2>
+
+                <p>
+                    Great video production is more than pointing
+                    a camera at an event. It is about composition,
+                    timing, movement, lighting and storytelling.
+                </p>
+
+                <p>
+                    Our cinematography approach combines technical
+                    production with creative visual direction to
+                    make your event look professional on screen.
+                </p>
+
+
+                <ul class="camera-list">
+
+                    <li>Professional camera operation</li>
+
+                    <li>Multiple camera angles</li>
+
+                    <li>Creative cinematic shots</li>
+
+                    <li>Professional event coverage</li>
+
+                    <li>Live production integration</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="camera-image">
+
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1400&q=90">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CEO
+    ========================= -->
+
+    <section class="ceo">
+
+        <div class="section-title">
+
+            <small>LEADERSHIP</small>
+
+            <h2>
+                MEET THE <span>CEO</span>
+            </h2>
+
+        </div>
+
+
+        <div class="ceo-card">
+
+            <div class="ceo-avatar">
+                NM
+            </div>
+
+            <h2>
+                Nanewotor Noel Mawuli
+            </h2>
+
+            <h4>
+                CEO &amp; LEAD EXECUTIVE
+            </h4>
+
+            <p>
+                Under the leadership of Nanewotor Noel Mawuli,
+                Alpha Sources Global Media Entertainment is focused
+                on delivering professional media production,
+                cinematography, event coverage and live-streaming
+                solutions that connect people beyond physical
+                locations.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section class="contact" id="contact">
+
+        <h2>
+            LET'S MAKE<br>
+            IT LIVE.
+        </h2>
+
+        <p>
+            Planning a church program, ceremony, conference,
+            corporate event or special occasion? Contact Alpha
+            Sources Global Media Entertainment for professional
+            video coverage and live-streaming services.
+        </p>
+
+        <a
+            class="phone"
+            href="tel:09022116318"
+        >
+            📞 090-22-11-63-18
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <h3>
+            ALPHA SOURCES
+            <span>GLOBAL MEDIA ENTERTAINMENT</span>
+        </h3>
+
+        <p>
+            Video Production • Cinematography • Live Streaming
+        </p>
+
+        <p>
+            © 2026 Alpha Sources Global Media Entertainment
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /*
+            SIMPLE SCROLL ANIMATION
+        */
+
+        const elements = document.querySelectorAll(
+            ".service, .step, .event, .signal-box, .ceo-card"
+        );
+
+        const observer = new IntersectionObserver(
+            function(entries) {
+
+                entries.forEach(function(entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform =
+                            "translateY(0)";
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+
+        elements.forEach(function(element) {
+
+            element.style.opacity = "0";
+
+            element.style.transform =
+                "translateY(40px)";
+
+            element.style.transition =
+                "opacity 0.8s ease, transform 0.8s ease";
+
+            observer.observe(element);
+
+        });
+
+
+        /*
+            CONSOLE MESSAGE
+        */
+
+        console.log(
+            "Welcome to Alpha Sources Global Media Entertainment!"
+        );
+
+    </script>
+
+</body>
+</html>
